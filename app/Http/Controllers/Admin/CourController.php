@@ -34,8 +34,7 @@ class CourController extends Controller
      */
     public function store(CoursFormRequest $request)
     {
-        // $thumbnail = '';
-        // $video = '';
+        //dd($request);
         $data = $request->validated();
         if($image = $request->file('thumbnail')){
             $filename = $image->getClientOriginalName();
@@ -49,7 +48,7 @@ class CourController extends Controller
             $video_cours = time().'_'.$filename;
             $path = 'video_cours/';
             $data['video'] = $path.$video_cours;
-            $video->move($path, $video);
+            $video->move($path, $video_cours);
         }
         //dd($data);
         $cour = Cours::create($data);

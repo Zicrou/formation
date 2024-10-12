@@ -22,7 +22,7 @@
             @foreach ($cours as $cour)
                 <tr>
                     <td><img src="{{ asset($cour->thumbnail) }}" alt="" style="width:200px;height:175px"></td>
-                    <td><video src="{{ asset($cour->video) }}" style="width:200px;height:175px"></video></td>
+                    <td><video controls src="{{ asset($cour->video) }}" style="width:200px;height:175px"></video></td>
                     <td>{{ $cour->title }}</td>
                     <td>{{ number_format($cour->price, thousands_separator: ' ') }}</td>
                     <td>{{ $cour->Thumbnail }}</td>
