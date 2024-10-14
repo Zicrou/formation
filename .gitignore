@@ -3,6 +3,8 @@
 /public/build
 /public/hot
 /public/storage
+/public/thumbnails/cours
+/public/thumbnails/video_cours
 /storage/*.key
 /vendor
 .env
