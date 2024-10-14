@@ -10,8 +10,18 @@
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
     <title>@yield('title') | Administration </title>
 </head>
+<style>
+    body{
+        background-color: #dbdbdb;
+    }
+</style>
 <body>
-    <div class="container mt-5">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    <div class="container mt-5 bg-white">
         @yield('content')
     </div>
 </body>

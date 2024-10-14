@@ -13,21 +13,30 @@
         <thead>
             <tr>
                 <th></th>
+                {{-- <th></th> --}}
                 <th>Titre</th>
                 <th>Prix</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach ($cours as $cour)
-                <tr>
+            <tr>
                     <td><img src="{{ asset($cour->thumbnail) }}" alt="" style="width:200px;height:175px"></td>
-                    <td><video controls src="{{ asset($cour->video) }}" style="width:200px;height:175px"></video></td>
+                    {{-- <td><video controls src="{{ asset($cour->video) }}" style="width:200px;height:175px"></video></td> --}}
                     <td>{{ $cour->title }}</td>
                     <td>{{ number_format($cour->price, thousands_separator: ' ') }}</td>
                     <td>{{ $cour->Thumbnail }}</td>
+                    <td class="d-flex gap-2 justify-content-end">
+                        <a href="{{ route('admin.cours.edit', $cour)}}" class="btn btn-primary">Editer</a>
+                        <form action="{{ route('admin.cours.destroy', $cour) }}" method="post">
+                            @csrf
+                            @method("delete")
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
                 </tr>
-            @endforeach
+                @endforeach
         </tbody>
     </table>
 

@@ -24,7 +24,7 @@ class CoursFormRequest extends FormRequest
         return [
             'title' => ['required', 'min:8'],
             'description' => ['required', 'min:8'],
-            'thumbnail' => ['required', 'mimes:jpg,jpeg,png,gif,webp', 'max:2000'],
+            'thumbnail' => ['required', 'mimes:jpg,jpeg,png,gif,webp'],
             'video' => ['required', 'mimes:mp4,mov,ogg,avi'],
             'price' => ['required'],
             'disponible' => ['required'],
