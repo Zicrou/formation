@@ -37,8 +37,8 @@
                         @enderror
                     </div>
                     <div class="mx-2">
-                        @include('shared.checkbox', ['name' => 'disponible', 'label' => 'disponible', 'value' => $cour->disponible])
-                        @include('shared.checkbox', ['name' => 'sold', 'label' => 'Vendu', 'value' => $cour->sold])
+                        @include('shared.select', ['name' => 'tags', 'label' => 'Tags', 'value' => $cour->tags()->pluck('id'), 'multiple' => true])
+                        @include('shared.checkbox', ['name' => 'disponible', 'label' => 'disponible', 'value' => $cour->disponible, 'tags' => $tags])
                     </div>
                 </div>
                 <div>

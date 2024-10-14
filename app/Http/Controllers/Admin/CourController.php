@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CoursFormRequest;
 use App\Http\Requests\Admin\CoursUpdateFormRequest;
 use App\Models\Cours;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -16,6 +17,7 @@ class CourController extends Controller
      */
     public function index()
     {
+        //dd(Cours::first()->tags()->pluck('id', 'name'));
         return view('admin.cours.index', [
             'cours' => Cours::orderBy('created_at', 'desc')->paginate(25)
         ]);
@@ -26,8 +28,10 @@ class CourController extends Controller
      */
     public function create()
     {
+        $cour = new Cours();
         return view('admin.cours.form', [
-            'cour' => new Cours()
+            'cour' => new Cours(),
+            'tags' => Tag::pluck('name', 'id'),
         ]);
     }
 
@@ -54,6 +58,7 @@ class CourController extends Controller
         }
         //dd($data);
         $cour = Cours::create($data);
+        $cour->tags()->sync($request->validated('tags'));
         //$image->storeAs($path, $thumbnail, 's3'); 
 
         return to_route('admin.cours.index')->with('success', 'Le cour a bien créé');
@@ -73,7 +78,8 @@ class CourController extends Controller
     public function edit(Cours $cour)
     {
         return view('admin.cours.form', [
-            'cour' => $cour
+            'cour' => $cour,
+            'tags' => Tag::pluck('name', 'id'),
         ]);
     }
 
@@ -103,8 +109,8 @@ class CourController extends Controller
             $data['video'] = $path.$video_cours;
             $video->move($path, $video_cours);
         }
-        
         $cour->update($data);
+        $cour->tags()->sync($request->validated('tags'));
         return to_route('admin.cours.index')->with('success', 'Le cours a bien été modifié');
     }
 

@@ -28,7 +28,7 @@ class CoursUpdateFormRequest extends FormRequest
             'video' => ['mimes:mp4,mov,ogg,avi'],
             'price' => ['required'],
             'disponible' => ['required'],
-            'sold' => ['required'],
+            'tags' => ['array', 'exists:tags,id', 'required'],
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CoursFormRequest extends FormRequest
+class TagFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +22,7 @@ class CoursFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'min:8'],
-            'description' => ['required', 'min:8'],
-            'thumbnail' => ['required', 'mimes:jpg,jpeg,png,gif,webp'],
-            'video' => ['required', 'mimes:mp4,mov,ogg,avi'],
-            'price' => ['required'],
-            'disponible' => ['required'],
-            'tags' => ['array', 'exists:tags,id', 'required'],
+            'name' => ['required', 'min:3'],
         ];
     }
 }
