@@ -17,7 +17,7 @@ return new class extends Migration
             $table->longtext('description');
             $table->string('thumbnail');
             $table->string('video');
-            $table->string('price');
+            $table->integer('price');
             $table->boolean('disponible');
             $table->boolean('sold');
             $table->timestamps();
