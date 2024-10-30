@@ -38,11 +38,7 @@
               @auth
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    @method('delete')
-                    <button class="nav-link">Se déconnecter</button>
-                  </form>
+                  <a @class(["nav-link"]) href="{{ route('dashboard') }}">Dashboard</a>
                 </li>
               </ul>
               @endauth

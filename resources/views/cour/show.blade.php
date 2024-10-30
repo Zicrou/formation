@@ -3,31 +3,26 @@
 @section('title', Str::limit($cour->title, 20))
 
 @section('content')
-    <style>
-        .carousel-indicators img {
-            width: 70px;
-            display: block;
-        }
-
-        .carousel-indicators button {
-            width: max-content !important;
-        }
-    </style>
     <div class="container mt-4">
 
         <hr>
 
         <div class="mt-4">
             <div class="row">
-                <div class="text-center text-primary fw-bold" style="font-size: 4rem;">
+                <div class="col-md-12 text-center text-primary fw-bold" style="font-size:;">
                     <h1 class=""><strong>{{ $cour->title }}</strong></h1>
                     {{ number_format($cour->price, thousands_separator: ' ') }}£
                 </div>
-                <div class="col-md-12">
-                    <div class="carousel slide" id="carouselDemo" data-bs-wrap="true" data-bs-ride="carousel">
-                        {{-- <img src="{{ asset($cour->thumbnail) }}" alt="" style="width:30rem;"/> --}}
-                        <video controls src="{{ asset($cour->video) }}" style="width:50rem;"></video>
-                    </div>
+                <div class="container">
+                        <video controls src="{{ asset($cour->video) }}" class="col-md-7 justify-content-center"></video>
+                </div>
+                <div class="form-group">
+                    <a href="{{ route('stripe.checkout', ['cour' => $cour]) }}" class="btn btn-primary col-md-3">Acheter</a>
+                    {{-- <form action="{{ route('stripe.checkout', $cour) }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="cour" value="{{$cour}}">
+                        <button class="btn btn-primary col-md-3" type="submit">Acheter</button>
+                    </form> --}}
                 </div>
                 <div class="mt-4">
                     <p>{!! nl2br($cour->description) !!}</p>
