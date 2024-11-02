@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             @forelse ($cours as $cour)
-                <div class="col-3 mb-4">
+                <div class="col-12 mb-4">
                     @include('cour.card')
                 </div>
             @empty

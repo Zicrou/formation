@@ -16,7 +16,7 @@
         <h2>Nos derniers biens :</h2>
         <div class="row gap-2 mb-[120px]">
             @foreach ($cours as $cour)
-                <div class="col">
+                <div class="col-12">
                     @include('cour.card')
                 </div>
             @endforeach
