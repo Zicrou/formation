@@ -15,12 +15,14 @@ class CourController extends Controller
     public function index(SearchCoursRequest $request)
     {
         $query = Cours::query()->where('disponible', '=', 1);
+        
         if ($price = $request->validated('price')) {
             $query = $query->where('price', '<=', $price);
         }
         if ($title = $request->validated('title')) {
             $query = $query->where('title', 'like', "%{$title}%");
         }
+        //$result = $query->created_at->diffForHumans()->get();
         return view('cour.index', [
             'cours' => $query->paginate(16),
             'input' => $request->validated()

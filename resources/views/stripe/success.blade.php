@@ -25,7 +25,7 @@
         <h1 class="text-center">Thank you for making payment</h1>
         <h3 class="text-center mt-3">{{ $successMessage }}</h3>
 
-        <a href="{{ route('stripe.index') }}" class="btn mt-5 bg">Continue Shopping</a>
+        <a href="{{ route('cour.index') }}" class="btn mt-5 bg">Continue Shopping</a>
     </div>
 </body>
 
