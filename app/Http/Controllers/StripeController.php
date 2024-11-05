@@ -16,9 +16,7 @@ class StripeController extends Controller
     public function checkout(Request $request)
     {
         $cour = Cours::where('id',$request->cour)->first();
-        //dd($cour);
         $stripe = new \Stripe\StripeClient(Config::get('stripe.stripe_secret_key'));
-        //dd($stripe);
         $redirectUrl = route('stripe.checkout.success') . '?session_id={CHECKOUT_SESSION_ID}';
         $response =  $stripe->checkout->sessions->create([
             'success_url' => $redirectUrl,
