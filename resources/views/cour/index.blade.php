@@ -1,9 +1,9 @@
 @extends('base')
 
 @section('title', 'Tous nos cours')
-
 @section('content')
 
+@include('shared.flash')
     <div class="bg-light p-5 mb-5 text-center">
         <form action="" method="get" class="container d-flex gap-2">
             <input type="number" placeholder="Budget max" class="form-control" name="price" value="{{ $input['price'] ?? ''}}">

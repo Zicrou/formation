@@ -6,7 +6,9 @@ use App\Http\Requests\CoursContactRequest;
 use App\Http\Requests\SearchCoursRequest;
 use App\Mail\CoursContactMail;
 use App\Models\Cours;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 
@@ -22,6 +24,10 @@ class CourController extends Controller
         if ($title = $request->validated('title')) {
             $query = $query->where('title', 'like', "%{$title}%");
         }
+        // $product = Product::where('cours_id', '=', $cour->id)
+        // ->where('user_id', '=', Auth::user()->id)
+        // ->where('paid', '=', 1)->get();
+        
         //$result = $query->created_at->diffForHumans()->get();
         return view('cour.index', [
             'cours' => $query->paginate(16),

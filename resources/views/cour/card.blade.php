@@ -14,7 +14,17 @@
                     <p class="card-text">
                         {{ Str::words($cour->description, 15) }}
                     </p>
-                    <p class="card-text d-flex justify-content-end"><small class="text-muted">{{ number_format($cour->price, thousands_separator: ' ') }} £ <a href="{{ route('stripe.checkout', ['cour' => $cour]) }}" class="btn btn-outline-primary mx-4"> Acheter</a></small></p>
+                    <p class="card-text d-flex justify-content-end">
+                        <small class="text-muted">{{ number_format($cour->price, thousands_separator: ' ') }} £ <a href="{{ route('stripe.checkout', ['cour' => $cour]) }}" class="btn btn-outline-primary mx-4"> Acheter</a></small>
+                        {{-- <span>
+                            @if (session('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error')}}
+                                </div>
+                            @endif
+                        </span> --}}
+                    </p>
+                    
                     <p class="card-text"><small class="text-muted">{{ $cour->updated_at->diffForHumans() }}</small></p>
                 </div>
             </div>
