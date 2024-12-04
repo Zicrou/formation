@@ -17,7 +17,7 @@ class CourController extends Controller
      */
     public function index()
     {
-        //dd(Cours::first()->tags()->pluck('id', 'name'));
+        //check this just for a try dd(Cours::first()->tags()->pluck('id', 'name'));
         return view('admin.cours.index', [
             'cours' => Cours::orderBy('created_at', 'desc')->paginate(25)
         ]);
@@ -56,11 +56,11 @@ class CourController extends Controller
             $data['video'] = $path.$video_cours;
             $video->move($path, $video_cours);
         }
-        //dd($data);
         $cour = Cours::create($data);
+        //dd($cour);
         $cour->tags()->sync($request->validated('tags'));
         //$image->storeAs($path, $thumbnail, 's3'); 
-
+        
         return to_route('admin.cours.index')->with('success', 'Le cour a bien créé');
     }
 

@@ -16,20 +16,20 @@
         <div class="container">
             <div class="row d-flex justify-content-between mb-12">
                 <div class="col-md-3">
-                    <img src="{{ asset($cours->first()->thumbnail) }}" class="rounded-circle" alt="..." style="width:360px;height:350px">
-                    <h2>{{ $cours->first()->title }}</h2>
+                    {{-- <img src="{{ asset($cours->first()->thumbnail) }}" class="rounded-circle" alt="..." style="width:360px;height:350px"> --}}
+                    {{-- <h2>{{ $cours->first()->title }}</h2> --}}
                     <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                         Fuga consequatur inventore reiciendis maxime, dolorem, blanditiis, architecto accusamus illum beatae placeat itaque repudiandae ducimus?</p>
                 </div>
                 <div class="col-md-3 rounded-circle">
-                    <img src="{{ asset($cours->first()->thumbnail) }}" class="rounded-circle" alt="..." style="width:360px;height:350px">
-                    <h2>{{ $cours->first()->title }}</h2>
+                    {{-- <img src="{{ asset($cours->first()->thumbnail) }}" class="rounded-circle" alt="..." style="width:360px;height:350px"> --}}
+                    {{-- <h2>{{ $cours->first()->title }}</h2> --}}
                     <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                         Fuga consequatur inventore reiciendis maxime, dolorem, blanditiis, architecto accusamus illum beatae placeat itaque repudiandae ducimus?</p>
                 </div>
                 <div class="col-md-3 rounded-circle">
-                    <img src="{{ asset($cours->first()->thumbnail) }}" class="rounded-circle" alt="..." style="width:360px;height:350px">
-                    <h2>{{ $cours->first()->title }}</h2>
+                    {{-- <img src="{{ asset($cours->first()->thumbnail) }}" class="rounded-circle" alt="..." style="width:360px;height:350px"> --}}
+                    {{-- <h2>{{ $cours->first()->title }}</h2> --}}
                     <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                         Fuga consequatur inventore reiciendis maxime, dolorem, blanditiis, architecto accusamus illum beatae placeat itaque repudiandae ducimus?</p>
                 </div>
@@ -42,7 +42,7 @@
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum obcaecati sequi sunt veritatis ab necessitatibus, quam quae, omnis repellat iste, hic consequatur eos reiciendis tempora commodi nam! Dolor, soluta deleniti.
                 </div>
                 <div class="col-md-3 p-2 ">
-                    <video src="{{ asset($cours->first()->video) }}" class="img-fluid" alt="..." controls>
+                    {{-- <video src="{{ asset($cours->first()->video) }}" class="img-fluid" alt="..." controls> --}}
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
         <div style="">
             <div class="row d-flex justify-content-center bg-warning" style="width:100%%;padding: 2rem;margin:0">
                 <div class="col-md-5" style="">
-                    <img src="{{ asset($cours[5]->thumbnail) }}" class="" alt="..." style="width:360px;height:330px">
+                    {{-- <img src="{{ asset($cours[5]->thumbnail) }}" class="" alt="..." style="width:360px;height:330px"> --}}
                 </div>
                 <div class="col-md-5  d-flex align-items-center">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque harum quis non. Qui quo molestiae, quos fugit quod porro tempore velit obcaecati deleniti adipisci, autem deserunt assumenda distinctio, nulla necessitatibus.</p>

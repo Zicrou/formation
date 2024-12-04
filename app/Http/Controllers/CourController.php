@@ -16,6 +16,15 @@ class CourController extends Controller
 {
     public function index(SearchCoursRequest $request)
     {
+        Cours::create([
+            'title' => 'Title',
+            'description' => 'Description',
+            'thumbnail' => 'cour_thumbnail.png',
+            'video' => 'cour_video.mp4',
+            'price' => '50000',
+            'disponible' => '1',
+            'sold' => '1',
+        ]);
         $query = Cours::query()->where('disponible', '=', 1);
         
         if ($price = $request->validated('price')) {
