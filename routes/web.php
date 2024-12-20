@@ -26,7 +26,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
     Route::resource('tag', TagController::class)->except(['show']);
 });
 
-Route::get('/user/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index');
+Route::get('/user/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index')->middleware(['auth', 'verified']);
 
 Route::get('/dashboards', function () {
     return view('dashboard');
