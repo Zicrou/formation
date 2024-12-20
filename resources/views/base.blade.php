@@ -31,7 +31,7 @@
               @auth
               <ul class="navbar-nav">
                 <li class="nav-item ">
-                  <a href="{{ route('dashboard') }}" @class(["nav-link", "fw-bold"]) aria-current="page">Dashboard</a>
+                  <a href="{{ route('dashboard.index') }}" @class(["nav-link", "fw-bold"]) aria-current="page">Dashboard</a>
                 </li>
               </ul> 
               @elseguest
