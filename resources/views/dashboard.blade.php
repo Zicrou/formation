@@ -15,4 +15,13 @@
             </div>
         </div>
     </div>
+    <hr>
+    @php
+        //dd($cours)
+    @endphp
+    @foreach ($cours as $cour)
+        <div class="col-12">
+            @include('cour.card')
+        </div>
+    @endforeach
 </x-app-layout>

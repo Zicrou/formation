@@ -12,7 +12,7 @@
 </head>
 <style>
     body{
-        background-color: #c0c0c0;
+        background-color: ;
     }
 </style>
 <body>

@@ -29,6 +29,7 @@ class CoursFormRequest extends FormRequest
             'price' => ['required'],
             'disponible' => ['required'],
             'tags' => ['array', 'exists:tags,id', 'required'],
+            'sold' => ['boolean']
         ];
     }
 }
