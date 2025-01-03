@@ -14,6 +14,9 @@
                     <p class="card-text">
                         {{ Str::words($cour->description, 15) }}
                     </p>
+                    <i id="like-{{ $cour->id }}" 
+                        data-cour-id="{{ $cour->id }}"
+                        class="dislike fa-thumbs-down fa-solid"></i> 
                     <p class="card-text d-flex justify-content-end">
                         <small class="text-muted">{{ number_format($cour->price, thousands_separator: ' ') }} £ <a href="{{ route('stripe.checkout', ['cour' => $cour]) }}" class="btn btn-outline-primary mx-4"> Acheter</a></small>
                         {{-- <span>
