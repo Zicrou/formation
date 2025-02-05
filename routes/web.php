@@ -21,16 +21,16 @@ Route::post('/cours/{cour}/contact', [\App\Http\Controllers\CourController::clas
     'cour' => $idRegex,
 ]);
 
-Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function(){
+Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function(){
     Route::resource('cours', CourController::class)->except(['show']);
     Route::resource('tag', TagController::class)->except(['show']);
 });
 
-Route::get('/user/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index')->middleware(['auth', 'verified']);
+Route::get('/user/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index')->middleware(['auth']);
 
 Route::get('/dashboards', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

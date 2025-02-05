@@ -38,6 +38,7 @@ class CourController extends Controller
 
     public function show(string $slug, Cours $cour)
     {
+        
         $expectedSlug = $cour->getSlug();
         if ($slug !== $expectedSlug) {
             return to_route('cour.show', ['slug' => $expectedSlug, 'cour' => $cour]);

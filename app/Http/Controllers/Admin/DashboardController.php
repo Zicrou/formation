@@ -10,9 +10,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $cours = Cours::where('paid', 1)->orderBy('created_at', 'desc');
         return view('dashboard', [
-            'cours' => Cours::orderBy('created_at', 'desc')->paginate(25)
-            
+            'cours' => $cours->paginate(),
         ]);
     }
 }
