@@ -38,6 +38,12 @@ class CourController extends Controller
 
     public function show(string $slug, Cours $cour)
     {
+        $product = '';
+        
+        Product::where('cours_id', '=', $cour->id)
+        ->where('user_id', '=', Auth::user()->id)
+        ->where('paid', '=', 1)->get();
+        dd($product);
         
         $expectedSlug = $cour->getSlug();
         if ($slug !== $expectedSlug) {
@@ -45,7 +51,8 @@ class CourController extends Controller
         }
 
         return view('cour.show', [
-            'cour' => $cour
+            'cour' => $cour,
+            'product'=> $product,
         ]);
     }
 

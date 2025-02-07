@@ -26,8 +26,10 @@
 
         <div class="col-md-4 mt-5">
             <div class="d-flex justify-content-center align-items-center text-center text-primary fw-bold " style="">
-                <span class="px-3">{{ number_format($cour->price, thousands_separator: ' ') }}£</span>
-                <a href="{{ route('stripe.checkout', ['cour' => $cour]) }}" class=" btn btn-outline-primary">Commander</a>
+                @if ($produit)
+                    <span class="px-3">{{ number_format($cour->price, thousands_separator: ' ') }}£</span>
+                    <a href="{{ route('stripe.checkout', ['cour' => $cour]) }}" class=" btn btn-outline-primary">Commander</a>
+                @endif
                 {{-- <div class="form-group mt-5">
                     <form action="{{ route('stripe.checkout', $cour) }}" method="POST">
                         @csrf

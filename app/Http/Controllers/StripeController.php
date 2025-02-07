@@ -21,7 +21,7 @@ class StripeController extends Controller
         
         $product = Product::where('cours_id', '=', $cour->id)
         ->where('user_id', '=', Auth::user()->id)
-        ->where('paid', '=', 1)->get();
+        ->where('paid', '=', 1)->first();
         
         if ($product->isNotEmpty()) {
             return back()->withErrors(['msg' => 'Vous avez déjà acheté ce cours']);

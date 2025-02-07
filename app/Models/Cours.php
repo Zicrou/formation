@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Str;
@@ -35,8 +36,12 @@ class Cours extends Model
     }
 
     public function scopeGetTimeAgo($query)
-{
-    return $query->whereDate('created_at' , '=', Carbon::today());
+    {
+        return $query->whereDate('created_at' , '=', Carbon::today());
+    }
 
-}
+    public function produits(): HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
 }

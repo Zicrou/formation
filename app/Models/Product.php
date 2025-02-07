@@ -14,4 +14,9 @@ class Product extends Model
         'user_id',
         'paid',
     ];
+
+    public function cours()
+    {
+        return $this->belongsTo(Cours::class);
+    }
 }
