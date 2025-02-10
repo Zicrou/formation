@@ -21,14 +21,23 @@ Route::post('/cours/{cour}/contact', [\App\Http\Controllers\CourController::clas
     'cour' => $idRegex,
 ]);
 
+Route::post('cours/likes/{courId}', [App\Http\Controllers\CourController::class,'likeCour'])->name('likes.cours')->where([
+    'courId' => $idRegex,
+]);
+
+// Route::post('/cours/likes/{courId}', [\App\Http\Controllers\CourController::class, 'likeCour'])->name('like.cour')->where([
+//     'courId' => $idRegex,
+// ]);
+
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function(){
     Route::resource('cours', CourController::class)->except(['show']);
     Route::resource('tag', TagController::class)->except(['show']);
 });
 
+
 Route::get('/user/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard.index')->middleware(['auth']);
 
-Route::get('/dashboards', function () {
+Route::get('dashboards', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 

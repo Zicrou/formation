@@ -16,6 +16,7 @@
                     <div class="">
                         <div class="row mt-5 ms-auto">
                             <h1 class="fw-bold fs-5">Liste des cours achetés</h1>
+                            
                             @foreach ($produits as $produit)
                                 <div class="col-3 d-flex">
                                     <h6 class="card-title">

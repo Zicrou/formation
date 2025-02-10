@@ -14,12 +14,12 @@ class DashboardController extends Controller
     {
         $cours = Cours::where('disponible', 1)->orderBy('created_at', 'desc')->get();
         
-        $produit = Product::where('user_id', '=', Auth::user()->id)
+        $produits = Product::where('user_id', '=', Auth::user()->id)
         ->where('paid', '=', 1)->get();
-        // dd($produit[0]->cours);
+        // dd($produits);
         return view('dashboard', [
             'cours' => $cours,
-            'produits' => $produit,
+            'produits' => $produits,
         ]);
     }
 }
