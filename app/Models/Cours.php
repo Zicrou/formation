@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Str;
+use Illuminate\Support\Str;
 
 class Cours extends Model
 {
@@ -41,9 +41,9 @@ class Cours extends Model
         return $query->whereDate('created_at' , '=', Carbon::today());
     }
 
-    public function produits(): HasMany
+    public function carts(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Cart::class);
     }
 
     public function likes()
@@ -57,4 +57,5 @@ class Cours extends Model
             return $this->likes()->where('user_id', Auth::user()->id)->exists();
         }
     }
+    
 }

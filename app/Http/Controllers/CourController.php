@@ -6,7 +6,7 @@ use App\Http\Requests\CoursContactRequest;
 use App\Http\Requests\SearchCoursRequest;
 use App\Mail\CoursContactMail;
 use App\Models\Cours;
-use App\Models\Product;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -45,12 +45,10 @@ class CourController extends Controller
 
     public function show(string $slug, Cours $cour)
     {
-        $product = '';
-        
-        Product::where('cours_id', '=', $cour->id)
+        $cart = Cart::where('cours_id', '=', $cour->id)
         ->where('user_id', '=', Auth::user()->id)
         ->where('paid', '=', 1)->get();
-        dd($product);
+        dd($cart);
         
         $expectedSlug = $cour->getSlug();
         if ($slug !== $expectedSlug) {
@@ -59,7 +57,7 @@ class CourController extends Controller
 
         return view('cour.show', [
             'cour' => $cour,
-            'product'=> $product,
+            'cart'=> $cart,
         ]);
     }
 
