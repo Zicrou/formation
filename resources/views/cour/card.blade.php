@@ -37,7 +37,7 @@
         </div>
     </div>
 </div>
-<script>
+{{-- <script>
     $(document).on('click', '.like-btn', function() {
         const courId = $(this).data('cour-id');
         const button = $(this);
@@ -69,4 +69,4 @@
             }
         });
     });
-</script>
+</script> --}}

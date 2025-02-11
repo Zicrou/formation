@@ -79,3 +79,36 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
+<script>
+  $(document).on('click', '.like-btn', function() {
+      const courId = $(this).data('cour-id');
+      const button = $(this);
+      //let i_tag = button.find('i');
+      const parentDiv = button.closest('div');
+      $.ajax({
+          url: '{{ route("likes.cours", ":courId") }}'.replace(':courId', courId),
+          method: 'POST',
+          data: {
+              _token: '{{ csrf_token() }}',
+          },
+          success: function(response) {
+              
+              // Change the like status text
+              if (response.status === 'liked') {
+                  i_tag = parentDiv.find("i").removeClass("far").addClass("fas");
+                  status = parentDiv.find(".like-count").text(response.likesCount + " Likes"); 
+                  button.find('.like-count').text(response.likesCount + " Likes");
+                  button.text( "Unlike")
+              } else {
+                  i_tag = parentDiv.find("i").removeClass("fas").addClass("far");
+                  status = parentDiv.find(".like-count").text(response.likesCount + " Likes"); 
+                  button.find('.like-count').text(response.likesCount + " Likes");
+                  button.text("Like");
+              }
+          },
+          error: function() {
+              window.location.href = '{{ route("login") }}';
+          }
+      });
+  });
+</script>
