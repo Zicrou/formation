@@ -15,4 +15,8 @@ class Like extends Model
         'cours_id',
         'user_id',
     ];
+    public function cours()
+    {
+        return $this->belongsTo(Cours::class);
+    }
 }
