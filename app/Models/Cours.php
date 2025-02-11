@@ -41,9 +41,9 @@ class Cours extends Model
         return $query->whereDate('created_at' , '=', Carbon::today());
     }
 
-    public function produits(): HasMany
+    public function carts(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Cart::class);
     }
 
     public function likes()

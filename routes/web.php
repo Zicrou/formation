@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CourController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,9 @@ Route::post('/cours/{cour}/contact', [\App\Http\Controllers\CourController::clas
 Route::post('cours/likes/{courId}', [App\Http\Controllers\CourController::class,'likeCour'])->name('likes.cours')->where([
     'courId' => $idRegex,
 ]);
-
+Route::get('panier', [CartController::class, 'index'])->name('cart.index');
+Route::get('panier/store', [CartController::class, 'store'])->name('cart.store');
+Route::post('panier/{cartId}', [CartController::class, 'destroy'])->name('cart.delete');
 // Route::post('/cours/likes/{courId}', [\App\Http\Controllers\CourController::class, 'likeCour'])->name('like.cour')->where([
 //     'courId' => $idRegex,
 // ]);

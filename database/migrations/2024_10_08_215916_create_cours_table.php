@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('price');
             $table->boolean('disponible');
             $table->boolean('sold');
+            $table->dateTime('deleted_at')->nullable();
             $table->timestamps();
         });
     }
