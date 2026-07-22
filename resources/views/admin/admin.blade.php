@@ -9,52 +9,67 @@
     <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
     <title>@yield('title') | Administration </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <style>
-    body{
-        background-color: ;
-    }
+   
 </style>
 <body>
-    <nav class="navbar navbar-expand-lg bg-primary">
-        <div class="container-fluid">
-          <a class="navbar-brand text-white" href="/">Formation</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          @php
-              $route = request()->route()->getName();
-          @endphp
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a @class(["nav-link", "active" => str_contains($route, 'cours.')]) aria-current="page" href="{{ route('admin.cours.index') }}">Gérer les cours</a>
+    @php
+    $route = request()->route()->getName();
+  @endphp
+  <header>
+    <nav class="navbar navbar-expand-lg bg-primary border">
+      <div class="container">
+        <a class="navbar-brand fs-5" href="/">Formation</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link fs-5 fw-bold active" aria-current="page" href="/">Acceuil</a>
+            </li>
+            <li class="nav-item text-yellow">
+              <a href="{{ route('cour.index') }}" @class(["nav-link fs-5 fw-bold", "text-grey" => str_contains($route, 'cours.')]) aria-current="page">Cours</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fs-5 fw-bold " href="#">Nos Services</a>
+            </li>
+            @auth
+            <li class="nav-item ">
+              <a href="{{ route('cart.index') }}" @class(["nav-link", "fw-bold", "fs-5"]) aria-current="page">Panier</a>
+            </li>
+              <li class="nav-item ">
+                <a href="{{ route('dashboard.index') }}" @class(["nav-link", "fw-bold", "fs-5"]) aria-current="page">Dashboard</a>
               </li>
-              <li class="nav-item">
-                <a @class(["nav-link", "active" => str_contains($route, 'tag.')]) href="{{ route('admin.tag.index') }}">Gérer les tags</a>
-              </li>
-            </ul>
-            <div class="ms-auto">
-              @auth
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a @class(["nav-link"]) href="{{ route('dashboard.index') }}">Dashboard</a>
+              @elseguest
+                <li class="nav-item ">
+                  <a href="{{ route('login') }}" @class(["nav-link", "fw-bold", "fs-5 btn btn-primary text-yellow"]) aria-current="page">Se connecter</a>
                 </li>
-              </ul>
-              @endauth
-            </div>
-          </div>
+                <li class="nav-item ">
+                  <a href="{{ route('register') }}" @class(["nav-link", "fw-bold", "fs-5"]) aria-current="page">S'inscrire</a>
+                </li>
+              @endauth 
+          </ul>
+          
         </div>
+      </div>
     </nav>
+  </header>
     <div class="container mt-5 bg-white">
         
         @include('shared.flash')
 
         @yield('content')
     </div>
+    
+ @include('layouts.footer');
     <script>
         new TomSelect('select[multiple]', {plugins: {remove_button: {title: 'Supprimer'}}})
     </script>
-    
 </body>
 </html>

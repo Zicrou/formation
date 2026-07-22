@@ -9,6 +9,7 @@
     rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <title>@yield('title') | Cours </title>
@@ -26,11 +27,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link fs-5 fw-bold active" aria-current="page" href="/">Acceuil</a>
-            </li>
-          </ul>
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link fs-5 fw-bold active" aria-current="page" href="/">Acceuil</a>
@@ -49,11 +45,11 @@
                 <a href="{{ route('dashboard.index') }}" @class(["nav-link", "fw-bold", "fs-5"]) aria-current="page">Dashboard</a>
               </li>
               @elseguest
-                <li class="nav-item ">
-                  <a href="{{ route('login') }}" @class(["nav-link", "fw-bold", "fs-5 btn btn-primary text-white"]) aria-current="page">Se connecter</a>
+                <li class="nav-item">
+                  <a href="{{ route('login') }}" class="nav-link fw-bold fs-5 btn btn-warning text-black" aria-current="page">Se connecter</a>
                 </li>
                 <li class="nav-item ">
-                  <a href="{{ route('register') }}" @class(["nav-link", "fw-bold", "fs-5"]) aria-current="page">S'inscrire</a>
+                  <a href="{{ route('register') }}" @class(["nav-link", "fw-bold","mx-3", "fs-5", "btn btn-dark", "text-white"]) aria-current="page">S'inscrire</a>
                 </li>
               @endauth 
           </ul>
