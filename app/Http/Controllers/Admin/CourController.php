@@ -39,7 +39,7 @@ class CourController extends Controller
     public function create()
     {
         $cour = new Cours();
-        return view('admin.cours.form', [
+        return view('admin.cours.create', [
             'cour' => new Cours(),
             'tags' => Tag::pluck('name', 'id'),
         ]);
@@ -52,13 +52,14 @@ class CourController extends Controller
     {
         // dd($request->validated());
         $data = $request->validated();
-        if($image = $request->file('thumbnail')){
+        if($image = $request->hasFile('thumbnail')){
+            $image = $request->file('thumbnail');
             $filename = $image->getClientOriginalName();
             $thumbnail = time().'_'.$filename;
             $path = 'thumbnails/cours/';
+            $image->move($path, $thumbnail);
             $data['thumbnail'] = $path.$thumbnail;
             //$imagePath = $request->file('thumbnail')->store('public/thumbnails/cours', 'public');
-            $image->move($path, $thumbnail);
             // $image->storeAs('thumbnails/cours', $filename, 'public');
         }
        
@@ -71,7 +72,6 @@ class CourController extends Controller
             $video->move('videos_cours', $filename);
             $data['video'] = 'videos_cours/'.$filename;
         }
-        // $data['sold'] = 1;
         if($cour = Cours::create($data)) {
             $cour->tags()->sync($request->validated('tags'));
         }
@@ -93,7 +93,8 @@ class CourController extends Controller
      */
     public function edit(Cours $cour)
     {
-        return view('admin.cours.form', [
+        $cour = $cour->with('tags')->first();
+        return view('admin.cours.edit', [
             'cour' => $cour,
             'tags' => Tag::pluck('name', 'id'),
         ]);
@@ -105,27 +106,38 @@ class CourController extends Controller
     public function update(CoursUpdateFormRequest $request, Cours $cour)
     {
         $data = $request->validated();
-        if($image = $request->file('thumbnail') ){
-            $filename = $image->getClientOriginalName();
-            $thumbnail = time().'_'.$filename;
-            if (File::exists($cour->thumbnail)) {
-                File::delete($cour->thumbnail);
+        
+        if($request->hasFile('thumbnail')){
+            if($request->file('thumbnail')){
+                $image = $request->file('thumbnail');
+                $fileName = $image->getClientOriginalName();
+                $thumbnail = time().'_'.$fileName;
+                if (File::exists($cour->thumbnail)) {
+                    File::delete($cour->thumbnail);
+                }
+                $path = 'thumbnails/cours/';
+                $image->move($path, $thumbnail);
+                $data['thumbnail'] = $path.$thumbnail;
             }
-            $path = 'thumbnails/cours/';
-            $data['thumbnail'] = $path.$thumbnail;
-            $image->move($path, $thumbnail);
+        }else{
+            $data['thumbnail'] = $cour->thumbnail;
         }
-        if($video = $request->file('video')){
-            $filename = $video->getClientOriginalName();
-            $video_cours = time().'_'.$filename;
-            if (File::exists($cour->video)) {
-                File::delete($cour->video);
+        if($request->hasFile('video')){
+            if($request->file('video')){
+                $video = $request->file('video');
+                $fileName = time().'_'.$video->getClientOriginalName();
+                
+                if (File::exists($cour->video)) {
+                    File::delete($cour->video);
+                }
+                $path = 'videos_cours/';
+                $video->move($path, $fileName);
+                $data['video'] = $path.$fileName;
             }
-            $path = 'video_cours/';
-            $data['video'] = $path.$video_cours;
-            $video->move($path, $video_cours);
+        }else{
+            $data['video'] = $cour->video;
         }
-        $data['sold'] = 0;
+        // dd($data);
         $cour->update($data);
         $cour->tags()->sync($request->validated('tags'));
         return to_route('admin.cours.index')->with('success', 'Le cours a bien été modifié');
@@ -136,13 +148,13 @@ class CourController extends Controller
      */
     public function destroy(Cours $cour)
     {
-        $cour->delete();
         if (File::exists($cour->video)) {
             File::delete($cour->video);
         }
         if (File::exists($cour->thumbnail)) {
             File::delete($cour->thumbnail);
         }
+        $cour->delete();
         return to_route('admin.cours.index')->with('success', 'Le cours a bien été supprimé');
     }
 
