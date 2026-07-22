@@ -19,7 +19,7 @@
 }
 
 .hero-cards{
-    margin-top:-100px;
+    margin-top:-100;
     position:relative;
     z-index:20;
 }
@@ -61,7 +61,7 @@
 </section>
 
 <div class="container mb-5">
-    <div class="row hero-cards g-4">
+    <div class="row hero-cards g-4" style="margin-top:-50;">
 
         <div class="col-md-4">
             <div class="card border-0 shadow-lg rounded-4 h-100">
@@ -137,40 +137,6 @@
     </div>
 </section>
 
-
-        
-<section class="mt-5">
-    <div class="container">
-        <div class="row d-flex bg-body-tertiary" >
-            <div class="col-12 col-lg-6 me-auto p-2 ">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque harum quis non. Qui quo molestiae, quos fugit quod porro tempore velit obcaecati deleniti adipisci, autem deserunt assumenda distinctio, nulla necessitatibus.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque harum quis non. Qui quo molestiae, quos fugit quod porro tempore velit obcaecati deleniti adipisci, autem deserunt assumenda distinctio, nulla necessitatibus.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque harum quis non. Qui quo molestiae, quos fugit quod porro tempore velit obcaecati deleniti adipisci, autem deserunt assumenda distinctio, nulla necessitatibus.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque harum quis non. Qui quo molestiae, quos fugit quod porro tempore velit obcaecati deleniti adipisci, autem deserunt assumenda distinctio, nulla necessitatibus.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque harum quis non. Qui quo molestiae, quos fugit quod porro tempore velit obcaecati deleniti adipisci, autem deserunt assumenda distinctio, nulla necessitatibus.
-                </p>
-            </div>
-            <div class="col-12 col-lg-6 d-flex justify-content-center " style="">
-                <img src="{{ asset('Linux.jpg') }}" class="rounded-circle img-fluid" alt="Responsive image" style="width: 100%; max-width: 400px; height:350px;">
-                {{-- <img src="{{ asset($cours[5]->thumbnail) }}" class="" alt="..." style="width:360px;height:330px"> --}}
-            </div>
-        </div>
-
-        <div class="row d-flex mt-5  mb-12">
-            <div class="col-12 col-lg-6 me-auto p-2 ">
-                <video src="{{ asset('4389357-uhd_3840_2024_30fps.mp4') }}" class="img-fluid" alt="..." controls>
-            </div>
-            <div class="col-12 col-lg-6 ms-auto px-5">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum obcaecati sequi sunt veritatis ab necessitatibus, quam quae, omnis repellat iste, hic consequatur eos reiciendis tempora commodi nam! Dolor, soluta deleniti.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum obcaecati sequi sunt veritatis ab necessitatibus, quam quae, omnis repellat iste, hic consequatur eos reiciendis tempora commodi nam! Dolor, soluta deleniti.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum obcaecati sequi sunt veritatis ab necessitatibus, quam quae, omnis repellat iste, hic consequatur eos reiciendis tempora commodi nam! Dolor, soluta deleniti.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum obcaecati sequi sunt veritatis ab necessitatibus, quam quae, omnis repellat iste, hic consequatur eos reiciendis tempora commodi nam! Dolor, soluta deleniti.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum obcaecati sequi sunt veritatis ab necessitatibus, quam quae, omnis repellat iste, hic consequatur eos reiciendis tempora commodi nam! Dolor, soluta deleniti.
-            </div>
-        </div>
-    </div>
-</section>
 
 <section class="mt-5 mb-5">
     <div class="container">

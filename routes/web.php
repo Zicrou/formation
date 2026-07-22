@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 $idRegex = '[0-9]+';
 $slugRegex = '[0-9a-z\-]+';
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/cours', [App\Http\Controllers\CourController::class, 'index'])->name('cour.index');
 Route::get('/cours/{slug}-{cour}', [App\Http\Controllers\CourController::class, 'show'])->name('cour.show')->where([
     'cour' => $idRegex,
@@ -31,6 +31,9 @@ Route::post('panier/{cartId}', [CartController::class, 'destroy'])->name('cart.d
 // Route::post('/cours/likes/{courId}', [\App\Http\Controllers\CourController::class, 'likeCour'])->name('like.cour')->where([
 //     'courId' => $idRegex,
 // ]);
+Route::get('services', function () {
+    return view('services');
+})->name('services');
 
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function(){
     Route::resource('cours', CourController::class)->except(['show']);

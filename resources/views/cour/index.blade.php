@@ -2,6 +2,7 @@
 
 @section('title', 'Tous nos cours')
 @section('content')
+  @include('shared.nav')
 
 @include('shared.flash')
 <section class="mt-4 mb-5">

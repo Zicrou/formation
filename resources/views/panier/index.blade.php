@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('title', 'Mon Panier')
-
+  @include("shared.nav")
 @section('content')
 
     <section class="mt-5">
