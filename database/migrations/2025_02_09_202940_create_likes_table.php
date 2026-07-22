@@ -14,9 +14,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('likes', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(Cours::class)->constrained();
-            $table->foreignIdFor(User::class)->constrained();
+            $table->uuid('id')->primary();
+            $table->uuid('cours_id');
+            $table->foreign('cours_id')
+            ->references('id')
+            ->on('cours')
+            ->onDelete('cascade');
+            $table->uuid('user_id');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

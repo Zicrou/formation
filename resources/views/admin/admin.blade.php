@@ -28,7 +28,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a @class(["nav-link", "active" => str_contains($route, 'cours.')]) aria-current="page" href="{{ route('admin.cours.index') }}">Gérer les bien</a>
+                <a @class(["nav-link", "active" => str_contains($route, 'cours.')]) aria-current="page" href="{{ route('admin.cours.index') }}">Gérer les cours</a>
               </li>
               <li class="nav-item">
                 <a @class(["nav-link", "active" => str_contains($route, 'tag.')]) href="{{ route('admin.tag.index') }}">Gérer les tags</a>

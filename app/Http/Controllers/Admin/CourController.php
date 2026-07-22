@@ -50,7 +50,7 @@ class CourController extends Controller
      */
     public function store(CoursFormRequest $request)
     {
-        //dd($request->validated());
+        // dd($request->validated());
         $data = $request->validated();
         if($image = $request->file('thumbnail')){
             $filename = $image->getClientOriginalName();
@@ -59,19 +59,22 @@ class CourController extends Controller
             $data['thumbnail'] = $path.$thumbnail;
             //$imagePath = $request->file('thumbnail')->store('public/thumbnails/cours', 'public');
             $image->move($path, $thumbnail);
+            // $image->storeAs('thumbnails/cours', $filename, 'public');
         }
-        if($video = $request->file('video')){
-            //$imagePath = $request->file('video')->store('public/video_cours', 'public');
-            $filename = $video->getClientOriginalName();
-            $video_cours = time().'_'.$filename;
-            $path = 'video_cours/';
-            $data['video'] = $path.$video_cours;
-            $video->move($path, $video_cours);
+       
+        if ($request->hasFile('video')) {
+            $video = $request->file('video');
+
+            $filename = time().'_'.$video->getClientOriginalName();
+            $path = 'videos_cours/';
+
+            $video->move('videos_cours', $filename);
+            $data['video'] = 'videos_cours/'.$filename;
         }
-        $data['sold'] = 1;
-        $cour = Cours::create($data);
-        //dd($cour);
-        $cour->tags()->sync($request->validated('tags'));
+        // $data['sold'] = 1;
+        if($cour = Cours::create($data)) {
+            $cour->tags()->sync($request->validated('tags'));
+        }
         //$image->storeAs($path, $thumbnail, 's3'); 
         
         return to_route('admin.cours.index')->with('success', 'Le cour a bien créé');
@@ -122,6 +125,7 @@ class CourController extends Controller
             $data['video'] = $path.$video_cours;
             $video->move($path, $video_cours);
         }
+        $data['sold'] = 0;
         $cour->update($data);
         $cour->tags()->sync($request->validated('tags'));
         return to_route('admin.cours.index')->with('success', 'Le cours a bien été modifié');

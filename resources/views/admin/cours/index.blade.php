@@ -1,6 +1,6 @@
 @extends('admin.admin')
 
-@section('title', 'Tous les biens')
+@section('title', 'Tous les cours')
 
 @section('content')
 

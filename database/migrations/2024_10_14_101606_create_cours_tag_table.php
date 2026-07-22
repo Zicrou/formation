@@ -14,8 +14,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('cours_tag', function (Blueprint $table) {
-            $table->foreignIdFor(Tag::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Cours::class)->constrained()->cascadeOnDelete();
+            $table->uuid('tag_id');
+            $table->foreign('tag_id')
+            ->references('id')
+            ->on('tags')
+            ->onDelete('cascade');
+
+            $table->uuid('cours_id');
+            $table->foreign('cours_id')
+            ->references('id')
+            ->on('cours')
+            ->onDelete('cascade');
+
             $table->primary(['tag_id', 'cours_id']);
         });
     }

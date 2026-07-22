@@ -10,11 +10,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Models\Concerns\HasUuid;
 
 class Cours extends Model
 {
-    use HasFactory;
-    //use SoftDeletes;
+    use HasFactory, HasUuid;
+    public $incrementing = false;
+
+    protected $keyType = 'string';
 
     protected $fillable = [
         'title',
