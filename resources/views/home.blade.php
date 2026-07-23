@@ -33,6 +33,7 @@
 }
 </style>
 @section('content')
+@include('shared.nav')
 <section class="hero-section">
     <div class="overlay"></div>
 

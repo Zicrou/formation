@@ -4,12 +4,15 @@
     font-weight: 700;
     border-bottom: 2px solid var(--bs-warning);
 }
+.bg-orange{
+      background-color: orange;
+    }
 </style>
 @php
     $route = request()->route()->getName();
   @endphp
 <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary border">
+    <nav class="navbar navbar-expand-lg bg-orange border">
       <div class="container">
         <a class="navbar-brand fs-5" href="/">Formation</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
